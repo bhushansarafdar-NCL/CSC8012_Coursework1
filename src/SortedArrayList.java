@@ -9,8 +9,10 @@ public class SortedArrayList<E> extends ArrayList<E> {
     @Override
     public void add(int index, E element) {
         if (element instanceof Client) {
-
+            super.add(element);
         }
-        super.add(index, element);
+        if (element instanceof  Event) {
+            super.add(element);
+        }
     }
 }
