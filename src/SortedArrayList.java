@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Comparator;
 
 public class SortedArrayList<E> extends ArrayList<E> {
 
@@ -9,11 +8,9 @@ public class SortedArrayList<E> extends ArrayList<E> {
 
     @Override
     public void add(int index, E element) {
-        super.add(index, element);
-    }
+        if (element instanceof Client) {
 
-    @Override
-    public void sort(Comparator<? super E> c) {
-        super.sort(c);
+        }
+        super.add(index, element);
     }
 }
