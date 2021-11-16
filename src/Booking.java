@@ -1,10 +1,10 @@
 public class Booking {
 
-    public Integer ClientId;
+    private Integer ClientId;
 
-    public String EventName;
+    private String EventName;
 
-    public Integer BookedTicket;
+    private Integer BookedTicket;
 
     public Booking(Integer clientId, String eventName, Integer bookedTicket) {
         ClientId = clientId;
@@ -18,5 +18,17 @@ public class Booking {
 
     public void CancelTickets(Integer numberOfTicketsTobeCancelled) {
         BookedTicket = BookedTicket - numberOfTicketsTobeCancelled;
+    }
+
+    public Integer GetClientId() {
+        return ClientId;
+    }
+
+    public String GetEventName() {
+        return EventName;
+    }
+
+    public Integer GetNumberOfTicketsBooked() {
+        return BookedTicket;
     }
 }

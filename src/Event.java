@@ -24,4 +24,12 @@ public class Event implements Comparable<Event> {
     public void SetRemainingTickets(Integer remaningTickets) {
         RemainingTickets = remaningTickets;
     }
+
+    public String GetEventName() {
+        return EventName;
+    }
+
+    public Integer GetRemainingTickets() {
+        return RemainingTickets;
+    }
 }
