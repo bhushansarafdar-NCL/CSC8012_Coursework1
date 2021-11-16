@@ -1,13 +1,16 @@
 public class Client implements Comparable<Client> {
 
+    private Integer ClientId;
+
     private String FirstName;
 
     private String LastName;
 
-    public Client(String firstName, String lastName) {
+    public Client(String firstName, String lastName, Integer clientId) {
         super();
         FirstName = firstName;
         LastName = lastName;
+        ClientId = clientId;
     }
 
     @Override

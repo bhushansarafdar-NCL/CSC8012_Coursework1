@@ -20,4 +20,8 @@ public class Event implements Comparable<Event> {
             return 0;
         }
     }
+
+    public void SetRemainingTickets(Integer remaningTickets) {
+        RemainingTickets = remaningTickets;
+    }
 }
