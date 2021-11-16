@@ -5,10 +5,12 @@ public class Event implements Comparable<Event> {
     private Integer RemainingTickets;
 
     public Event(String eventName, Integer remainingTickets) {
+        super();
         EventName = eventName;
         RemainingTickets = remainingTickets;
     }
 
+    @Override
     public int compareTo(Event event) {
         int eCmp = EventName.compareTo(event.EventName);
         if (eCmp != 0) {

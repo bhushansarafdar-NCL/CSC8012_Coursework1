@@ -5,10 +5,12 @@ public class Client implements Comparable<Client> {
     private String LastName;
 
     public Client(String firstName, String lastName) {
+        super();
         FirstName = firstName;
         LastName = lastName;
     }
 
+    @Override
     public int compareTo(Client client) {
         int lnCmp = LastName.compareTo(client.LastName);
         int fnCmp = FirstName.compareTo(client.FirstName);
