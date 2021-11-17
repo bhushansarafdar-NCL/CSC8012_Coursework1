@@ -1,11 +1,14 @@
 public class Event implements Comparable<Event> {
 
+    private Integer EventId;
+
     private String EventName;
 
     private Integer RemainingTickets;
 
-    public Event(String eventName, Integer remainingTickets) {
+    public Event(String eventName, Integer remainingTickets, Integer eventId) {
         super();
+        EventId = eventId;
         EventName = eventName;
         RemainingTickets = remainingTickets;
     }
@@ -31,5 +34,9 @@ public class Event implements Comparable<Event> {
 
     public Integer GetRemainingTickets() {
         return RemainingTickets;
+    }
+
+    public Integer GetEventId() {
+        return  EventId;
     }
 }

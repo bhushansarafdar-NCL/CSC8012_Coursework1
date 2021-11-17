@@ -31,6 +31,10 @@ public class Client implements Comparable<Client> {
     public String GetClientName() {
         return FirstName + " " + LastName;
     }
+
+    public Integer GetClientId() {
+        return ClientId;
+    }
 }
 
 

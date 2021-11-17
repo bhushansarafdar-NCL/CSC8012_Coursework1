@@ -32,6 +32,7 @@ public class Operations {
                     BookTickets();
                     break;
                 case "c":
+                    DisplayClientInfo();
                     break;
                 case "e":
                     DisplayEventInfo();
@@ -73,7 +74,7 @@ public class Operations {
 
                 if (LineNumber > 1 && LineNumber < (3 + NumberOfEvents * 2)) {
                     String eventName = inputFile.nextLine().trim();
-                    Event event = new Event(eventName, Integer.parseInt(inputFile.nextLine().trim()));
+                    Event event = new Event(eventName, Integer.parseInt(inputFile.nextLine().trim()), (NumberOfEvents - (eventList.size() - 1)));
                     eventList.add(event);
                     LineNumber = LineNumber + 2;
                 }
@@ -127,13 +128,73 @@ public class Operations {
     public void BookEventForClient(Integer clientId) {
         String clientName = clientList.get(clientId).GetClientName();
         System.out.println("Booked Event Tickets for " + clientName);
+        Integer NumberOfEventsBookedByClient = 0;
         for (Booking booking:
              bookings) {
             if (booking.GetClientId().equals(clientId)) {
+                NumberOfEventsBookedByClient++;
                 System.out.println("Event Name: " + booking.GetEventName() +
                                 " Number of Tickets Booked: " + booking.GetNumberOfTicketsBooked());
             }
         }
-        System.out.println("Do you wish to update an existing booking or book a new event?");
+        if (NumberOfEventsBookedByClient == 0) {
+            System.out.println("No events booked.");
+        }
+
+        BookEvent(false);
+    }
+
+    private void BookEvent(boolean isInvalidInput) {
+        if (!isInvalidInput) {
+            System.out.println("Do you wish to book an event? (y/n)");
+        }
+
+        Scanner input = new Scanner(System.in);
+        switch (input.nextLine().toLowerCase()){
+            case "y":
+                DisplayEventInfo();
+                System.out.println("Please input integer value Event Id of Event to be booked");
+
+                Integer eventId = Integer.parseInt(input.nextLine());
+                if (eventId > 0 && eventId <= eventList.size()) {
+                    if (eventList.get(eventId).GetRemainingTickets() > 0) {
+                        System.out.println("Please enter number of tickets to be booked.");
+
+                        Integer NumberOfTickets = Integer.parseInt(input.nextLine());
+                        if (NumberOfTickets > 0 && eventList.get(eventId).GetRemainingTickets() >= NumberOfTickets) {
+
+                        }
+                        else {
+                            System.out.printf("\nOnly %d tickets available.", eventList.get(eventId).GetRemainingTickets());
+                        }
+                    }
+                    else {
+                        System.out.println("Event is fully booked.");
+                    }
+                }
+                break;
+            case "n":
+                StartApplication();
+                break;
+            default:
+                System.out.println("Invalid input. Please enter a valid response. (y/n)");
+                BookEvent(true);
+                break;
+        }
+    }
+
+    private void DisplayClientInfo() {
+        for (Client client:
+             clientList) {
+            System.out.println("Client Name: " + client.GetClientName() + "\nEvents Booked :-");
+            Integer NoOfBookings = 0;
+            for (Booking booking:
+                 bookings) {
+                if (booking.GetClientId().equals(client.GetClientId())) {
+                    NoOfBookings++;
+                    System.out.println("Event Name: " + booking.GetEventName() + "\n Number of Tickets Booked: " + booking.GetNumberOfTicketsBooked());
+                }
+            }
+        }
     }
 }
