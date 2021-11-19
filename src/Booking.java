@@ -1,14 +1,19 @@
+import java.awt.print.Book;
+
 public class Booking {
 
     private Integer ClientId;
 
-    private String EventName;
+    private Integer EventId;
 
     private Integer BookedTicket;
 
-    public Booking(Integer clientId, String eventName, Integer bookedTicket) {
+    public Booking() {
+
+    }
+    public Booking(Integer clientId, Integer eventId, Integer bookedTicket) {
         ClientId = clientId;
-        EventName = eventName;
+        EventId = eventId;
         BookedTicket = bookedTicket;
     }
 
@@ -24,8 +29,8 @@ public class Booking {
         return ClientId;
     }
 
-    public String GetEventName() {
-        return EventName;
+    public Integer GetEventId() {
+        return EventId;
     }
 
     public Integer GetNumberOfTicketsBooked() {

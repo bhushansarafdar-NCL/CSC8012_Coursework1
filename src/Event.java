@@ -24,8 +24,15 @@ public class Event implements Comparable<Event> {
         }
     }
 
-    public void SetRemainingTickets(Integer remaningTickets) {
+    public void SetRemainingTickets(Integer remaningTickets, Boolean isBooking) {
         RemainingTickets = remaningTickets;
+
+        if (isBooking) {
+            System.out.println("Tickets Booked Successfully!");
+        }
+        else {
+            System.out.println("Tickets Cancelled Successfully!");
+        }
     }
 
     public String GetEventName() {
